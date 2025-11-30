@@ -15,31 +15,43 @@ This project combines both interests. My goal is to see if a country's climate h
 
 ---
 
+## Overview
+
+This project explores the relationship between a country's climate and its musical preferences. By analyzing the "Top 30" songs from 68 countries, I investigated whether environmental factors like temperature and rainfall have a statistically significant correlation with the Genre or Mood of music listeners prefer.
+
 ## Data to be Used
 
 ### Music Popularity per Country
 
 * Source: Shazam official website (https://www.shazam.com/charts/top-200)
-* Data: Top 200 songs for 70 countries in the week of 21-27 October 2025.
-* Status: Collection Complete. I have 70 separate CSV files.
+* Data: Top 30 songs for 68 countries in the week of 21-27 October 2025.
+* Status: Collection Complete. I have 68 separate CSV files.
 * Features: chart_position, artist_name, song_name, country_name.
 
 ### Audio Features & Genre
 
-* The Shazam CSVs do not include the genre, tempo, energy, or mood of the songs and I need these to 
-* Collection steps:
-    1.  I will find a large, public "Audio Features" dataset from Kaggle or another relaible source.
-    2.  This dataset will provide the audio features I need for many songs.
-    3.  I will use Pandas in Python to merge this dataset with my main Shazam data and check for any shortcomings.
-    4.  I will repeat the steps for large shortcomings. If the shortcoming is small I may fill the data manually.
+* Problems:
+* 1. The Shazam CSVs do not include the genre, tempo, energy, or mood of the songs and I need these too.
+* 2. I tried API's like Spotify, Shazam and Last.fm but none of the data they returned were usable, they returned NA for more than half of the requests and there was a request limit which i couldnt avoid as i have more than 1000 unique songs that needed to be sorted.
+
+* Solution:
+* 1. I used gemini to anotate my music ganre and mood features which I sampled and checked for acuracy and it is acurete.
+* 2. The genre tags were selected to not be specific to the region they came from so turkish pop counts as pop to make analysis possible.
+* Features: genre, mood for all songs from music popularity dataset
+
 
 ### Climate of Countries
 
-* I need to add climate data for each of the 70 countries.
-* Collection steps
-    1.  I will find a simple, public dataset from Kaggle or other reliable data source.
-    2.  I will collect climate type, avarage temprature and potentially other relavant data.
-    3.  I will use Pandas in Python to merge this climate data with my main music dataset.
+I compiled the data for the 193 countries by aggregating information from three sources. 
+1. Temperature & Rainfall 
+Source: The World Bank Climate Change Knowledge Portal (CCKP) and the Climatic Research Unit (CRU) at the University of East Anglia.
+Method: I filled a table with the data found from mentioned sources.
+
+3. Climate Type (Köppen Classification)
+Source: The Köppen-Geiger Climate Classification system.
+Method: I matched each country to its dominant climate zone.
+
+
 
 
 ## Analysis Plan
