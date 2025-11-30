@@ -54,13 +54,41 @@ Method: I matched each country to its dominant climate zone.
 
 
 
-## Analysis Plan
-* I will create visualizations to find patterns:
-    1. A scatterplot to see if avg_annual_temperature (x-axis) and mood (y-axis) are correlated.
-    2. A scatterplot to check avg_annual_temperature vs. energy.
-    3. A bar chart showing the most popular genre per climate type
-      
-2.  Hypothesis Test: I will run a formal test to see if the average mood of songs in "Tropical" countries is statistically different from the average mood in "Temperate" countries.
+## Methedology
+#Data Cleaning & Integration
+* I needed to merge all the different csv files from shazam and combine it with the genres.  
+* I created a mapping dictionary to fix naming mismatches from the climate and music data. (e.g., mapping "United Arab" "United Arab Emirates").
+* Merging: I successfully merged the datasets, resulting in a final dataset of 68 common countries with complete music and climate information.
+* I used explode to process "Pop / Hip-Hop" as two seperate values "Pop" and "Hip-Hop"
+
+#Visualization
+* I first created plots that show the total distrabutions of genres and moods.
+* Then I created plots that show coreataions between mood / genre and temprature/rainfall to see potential reationships between them.
+
+# Hypothesis Test
+* I performed Pearson Correlation Tests to validate three specific hypotheses.
+  
+1) The "Winter Melancholy"
+* Null 1:
+* Alternative 1: Colder countries prefer darker, more intense music.
+* Result: Reject H0 (Strongly)
+* Stats: I found a strong negative correlation ($r = -0.57, P < 0.00001) between temperature and "Dark" mood scores.
+* Conclusion: As temperature drops, the popularity of "Dark" and "Energetic" music rises significantly.
+
+2) The "Sunny Disposition"
+* Null 2:
+* Alternative 2: Warmer countries prefer high-energy, positive music.
+* Result: Reject H0
+* Stats: I found a positive correlation (r = 0.41, P = 0.0006) between temperature and "Dance" mood scores.
+* Conclusion: Warmer climates show a distinct preference for "Dance" and "Smooth" moods.
+  
+3) The "Rainy Day Vibe"
+* Null 3:
+* Alternative 3: Countries with higher rainfall prefer calmer music ("Chill" mood).
+* Result: Failed To Reject H0
+* Stats: While I found a positive trend (r = 0.21), the P-Value (0.096) is not low enough to be statistically significant.
+
+
 
 ### Machine Learning (ML)
 
