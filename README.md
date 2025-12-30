@@ -69,29 +69,70 @@ Method: I matched each country to its dominant climate zone.
 * I performed Pearson Correlation Tests to validate three specific hypotheses.
   
 1) The "Winter Melancholy"
-* Null 1:
+* Null 1: Temperature has no significant correlation with the popularity of "Dark" mood scores. 
 * Alternative 1: Colder countries prefer darker, more intense music.
 * Result: Reject H0 (Strongly)
 * Stats: I found a strong negative correlation ($r = -0.57, P < 0.00001) between temperature and "Dark" mood scores.
 * Conclusion: As temperature drops, the popularity of "Dark" and "Energetic" music rises significantly.
 
 2) The "Sunny Disposition"
-* Null 2:
+* Null 2: Temperature has no significant correlation with the preference for "Dance" or high-energy music.
 * Alternative 2: Warmer countries prefer high-energy, positive music.
 * Result: Reject H0
 * Stats: I found a positive correlation (r = 0.41, P = 0.0006) between temperature and "Dance" mood scores.
 * Conclusion: Warmer climates show a distinct preference for "Dance" and "Smooth" moods.
   
 3) The "Rainy Day Vibe"
-* Null 3:
+* Null 3: Annual rainfall has no significant correlation with the popularity of "Chill" music.
 * Alternative 3: Countries with higher rainfall prefer calmer music ("Chill" mood).
 * Result: Failed To Reject H0
 * Stats: While I found a positive trend (r = 0.21), the P-Value (0.096) is not low enough to be statistically significant.
 
 
 
-### Machine Learning (ML)
+## Machine Learning (ML)
+In the final phase of the project, I applied machine learning techniques to test if climate is a predictive factor for music taste, moving beyond simple correlation.
 
-*  Regression Model: I will try to build a regression model to predict a country's avg_mood_score based on its avg_annual_temperature.
-*  Classification Model: I will try to build a model to predict if a country is in which climate_zone based *only* on the audio features of its top songs (like average energy, tempo, and danceability).
 
+### 1. Decision Tree Classifier (Supervised Learning)
+* Goal: Predict a song's Genre based only on the country's Temperature and Rainfall.
+* Result: The model achieved an accuracy of 40%.
+### 1. Decision Tree Classifier (Supervised Learning)
+* Interpretation: While this accuracy is significantly higher than random chance (~12.5%), the detailed classification report reveals a strong Class Imbalance.
+* Bias Note: The model achieved a Recall of 0.95 for "Pop", indicating it learned to predict the majority class to maximize its score, while struggling to identify minority genres (like Rock or Folk) based on climate alone.
+
+### 2. K-Means Clustering (Unsupervised Learning)
+* Goal: To see if countries naturally group into "Climate-Music Zones".
+* Method: Used the Elbow Method to determine that k=3 was the optimal number of clusters.
+* Findings: The algorithm identified three distinct climate groups (likely Cold, Moderate, and Hot).
+* The "Pop Universality" Discovery: Interestingly, Pop was the most common genre in all three clusters. This suggests that the popularity of Pop music is robust and transcends environmental boundaries, overpowering the subtler climate preferences found in the earlier correlation analysis.
+
+### 3. Feature Importance (Causal Insight)
+* Finding: The Decision Tree analysis revealed that "Rainfall" had a significantly higher importance score than Temperature.
+* Interpretation: This suggests that precipitation patterns (e.g., gloomy vs. sunny weather) are a stronger driver of musical preference than temperature. This aligns with the "Rainy Day Vibe" hypothesis, indicating that atmospheric mood has a measurable impact on chart dominance.
+
+---
+
+## Limitations & Future Work
+* Class Imbalance: The dataset is heavily skewed (29% Pop). Future iterations would require undersampling Pop songs or using SMOTE (Synthetic Minority Over-sampling Technique) to force the model to learn niche genres like "Rock" or "Reggaeton".
+* Time Series Analysis: This study is a cross-sectional "snapshot" from Oct 2025. It lacks the historical data required for Time Series Analysis (e.g., ARIMA). Future work would involve collecting data over 12 months to analyze Seasonality (e.g., Do cold countries listen to "summer hits" in July?).
+* Confounding Variables: A rigorous Causal Inference study (using Inverse Probability Weighting) is needed to control for economic factors (GDP), which likely correlate with both climate and music market maturity.
+
+---
+
+## Project Structure
+* `data_process.ipynb`: Cleaning raw Shazam CSVs and merging with Climate Data.
+* `data_visualization.ipynb`: Generating global maps, scatter plots, and violin plots.
+* `hypotesis_test.ipynb`: Running Pearson Correlation and formal Hypothesis Testing.
+* `machine_learning.ipynb`: Decision Tree and K-Means Clustering analysis.
+* `Song_Data_With_Genres.xlsx`: The final processed dataset used for analysis.
+
+## How to Run
+1. Install the required libraries:
+pandas 
+numpy 
+matplotlib 
+seaborn 
+scikit-learn 
+scipy 
+statsmodels
