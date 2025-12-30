@@ -97,7 +97,6 @@ In the final phase of the project, I applied machine learning techniques to test
 ### 1. Decision Tree Classifier (Supervised Learning)
 * Goal: Predict a song's Genre based only on the country's Temperature and Rainfall.
 * Result: The model achieved an accuracy of 40%.
-### 1. Decision Tree Classifier (Supervised Learning)
 * Interpretation: While this accuracy is significantly higher than random chance (~12.5%), the detailed classification report reveals a strong Class Imbalance.
 * Bias Note: The model achieved a Recall of 0.95 for "Pop", indicating it learned to predict the majority class to maximize its score, while struggling to identify minority genres (like Rock or Folk) based on climate alone.
 
