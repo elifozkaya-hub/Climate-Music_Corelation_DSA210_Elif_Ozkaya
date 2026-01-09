@@ -152,4 +152,8 @@ https://climate-music-corelation-dsa210-elif-ozkaya.streamlit.app/
 * `requirements.txt`: List of dependencies for deploying the web app and codes.
 
 ## AI Usage Disclaimer
-In this project I have used AI tools to assist with coding, debugging, and documentation. While AI was used to accelerate the development process and troubleshoot technical issues, all logic, statistical analysis, and final conclusions were verified and validated by me.
+8. AI Usage Disclaimer
+In this project, I utilized AI tools (Gemini) to assist with:
+
+* Data Annotation: Generating Genre and Mood tags for songs where API data was missing.
+* Coding Support: Debugging Streamlit deployment and optimizing Pandas merge operations.
