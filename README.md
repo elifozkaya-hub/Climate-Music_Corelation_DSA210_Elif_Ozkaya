@@ -118,20 +118,38 @@ In the final phase of the project, I applied machine learning techniques to test
 * Confounding Variables: A rigorous Causal Inference study (using Inverse Probability Weighting) is needed to control for economic factors (GDP), which likely correlate with both climate and music market maturity.
 
 ---
+## Web Application for Final Reporting
+To make the findings accessible, I developed an interactive web application using Streamlit.
+
+https://climate-music-corelation-dsa210-elif-ozkaya.streamlit.app/ 
+
+* Please contact me or run app.py from terminal if site fails to open.
+
+* Interactive Visualizations: I used Altair to create interactive scatter plots that allow users to filter by "Mood" and hover over individual data points (songs) to see details like Country, Temperature, and Artist.
+* Hypothesis Storytelling: The dashboard is structured to guide the user through the three main hypotheses (Winter Melancholy, Sunny Disposition, Rainy Day Vibe), displaying the statistical results alongside the visual data.
+* Testing: The application was tested in a virtual environment to ensure portability across different systems.
+* File: `app.py` contains the source code for the dashboard.
+
+---
+
+## Limitations & Future Work
+* Class Imbalance: The dataset is heavily skewed (29% Pop). Future iterations would require undersampling Pop songs or using SMOTE (Synthetic Minority Over-sampling Technique) to force the model to learn niche genres like "Rock" or "Reggaeton".
+* Time Series Analysis: This study is a cross-sectional "snapshot" from Oct 2025. It lacks the historical data required for Time Series Analysis (e.g., ARIMA). Future work would involve collecting data over 12 months to analyze Seasonality (e.g., Do cold countries listen to "summer hits" in July?).
+* Confounding Variables: A rigorous Causal Inference study (using Inverse Probability Weighting) is needed to control for economic factors (GDP), which likely correlate with both climate and music market maturity.
+
+---
 
 ## Project Structure
+
+* `Plots/`: Contains static image files of the visualizations (histograms, scatter plots, heatmaps) generated during the analysis.
+* `ülkeler müzik/`: Folder containing the raw, individual CSV files for each of the 68 countries' music charts scraped from Shazam.
 * `data_process.ipynb`: Cleaning raw Shazam CSVs and merging with Climate Data.
 * `data_visualization.ipynb`: Generating global maps, scatter plots, and violin plots.
 * `hypotesis_test.ipynb`: Running Pearson Correlation and formal Hypothesis Testing.
 * `machine_learning.ipynb`: Decision Tree and K-Means Clustering analysis.
 * `Song_Data_With_Genres.xlsx`: The final processed dataset used for analysis.
+* `app.py`: The Streamlit dashboard source code.
+* `requirements.txt`: List of dependencies for deploying the web app and codes.
 
-## How to Run
-1. Install the required libraries:
-pandas 
-numpy 
-matplotlib 
-seaborn 
-scikit-learn 
-scipy 
-statsmodels
+## AI Usage Disclaimer
+In this project I have used AI tools to assist with coding, debugging, and documentation. While AI was used to accelerate the development process and troubleshoot technical issues, all logic, statistical analysis, and final conclusions were verified and validated by me.
