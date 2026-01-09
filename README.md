@@ -150,6 +150,7 @@ https://climate-music-corelation-dsa210-elif-ozkaya.streamlit.app/
 * `Song_Data_With_Genres.xlsx`: The final processed dataset used for analysis.
 * `app.py`: The Streamlit dashboard source code.
 * `requirements.txt`: List of dependencies for deploying the web app and codes.
+* `Report.md`: The final project report containing methodology, hypothesis testing results, and conclusions.
 
 ## AI Usage Disclaimer
 8. AI Usage Disclaimer
