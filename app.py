@@ -31,7 +31,7 @@ def load_data():
 df = load_data()
 
 if df is None:
-    st.error("❌ Error loading data. Please check file paths.")
+    st.error("Error loading data. Please check file paths.")
     st.stop()
 
 # --- SIDEBAR FILTERS ---
@@ -45,10 +45,10 @@ filtered_df = df[df['Mood'].isin(top_moods)]
 # --- MAIN PAGE CONTENT ---
 
 # 1. HEADER & MOTIVATION (From README)
-st.title("🌍 Global Music Trends: The Climate Connection")
+st.title("Global Music Trends: The Climate Connection")
 st.markdown("### DSA 210 Term Project | Fall 2025-2026")
 
-with st.expander("📖 Project Motivation & Methodology", expanded=True):
+with st.expander("Project Motivation & Methodology", expanded=True):
     st.markdown("""
     **Does the weather affect the music we listen to?**
     
@@ -61,7 +61,7 @@ with st.expander("📖 Project Motivation & Methodology", expanded=True):
     """)
 
 # Use Tabs to structure the story
-tab1, tab2, tab3 = st.tabs(["📊 Correlation Analysis", "🤖 Machine Learning Insights", "📝 Conclusions"])
+tab1, tab2, tab3 = st.tabs(["Correlation Analysis", "Machine Learning Insights", "Conclusions"])
 
 # --- TAB 1: HYPOTHESIS TESTING ---
 with tab1:
@@ -126,7 +126,7 @@ with tab2:
     col_a, col_b = st.columns(2)
     
     with col_a:
-        st.subheader("🌲 Decision Tree Classifier")
+        st.subheader("Decision Tree Classifier")
         st.write("**Goal:** Predict Genre based on Temp & Rainfall.")
         st.metric(label="Model Accuracy", value="40%", delta="Better than random (12.5%)")
         st.markdown("""
@@ -135,7 +135,7 @@ with tab2:
         """)
         
     with col_b:
-        st.subheader("🔗 K-Means Clustering")
+        st.subheader("K-Means Clustering")
         st.write("**Goal:** Group countries into 'Climate-Music Zones'.")
         st.markdown("""
         * **Result:** Found 3 distinct climate groups (Cold, Moderate, Hot).
@@ -147,10 +147,10 @@ with tab3:
     st.header("Final Thoughts & Future Work")
     
     st.markdown("""
-    ### 📝 Summary
+    ### Summary
     While we found a strong correlation between **Cold Weather and Dark Music** ($r=-0.57$), other factors like **Rainfall** were less predictive than expected. The ubiquity of Pop music (Pop Universality) often overpowers subtle climate preferences.
     
-    ### 🔮 Limitations & Future Work
+    ### Limitations & Future Work
     * **Class Imbalance:** 29% of the dataset was Pop. Future work should use **SMOTE** to balance the data.
     * **Time Series:** This was a snapshot of **October 2025**. To see true seasonality (e.g., "Summer Hits"), we need data over 12 months.
     * **Economics:** We need to control for GDP, as economic factors might influence music market maturity more than weather.
